@@ -1,5 +1,6 @@
 package com.mahesvara.rpg.entity;
 
+import com.mahesvara.rpg.enumerate.SkillType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,6 +19,10 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    @ManyToOne
+    @JoinColumn(name = "character_id")
+    private Hero hero;
+
     @Column(name = "name")
     private String name;
 
@@ -27,22 +32,20 @@ public class Skill {
     @Column(name = "effect", columnDefinition = "jsonb")
     private String effect;
 
-    @Getter
     @Column(name = "cooldown")
     private Integer cooldown;
-
-    @Column(name = "cost")
-    private Integer cost;
 
     @Column(name = "cost_type")
     private String costType;
 
-    @ManyToOne
-    @JoinColumn(name = "character_id")
-    private Hero hero;
+    @Column(name = "cost")
+    private Integer cost;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "element_id")
     private Element element;
+
+    @Column(name = "skill_type")
+    private SkillType type;
 
 }

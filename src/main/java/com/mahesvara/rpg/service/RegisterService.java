@@ -38,9 +38,12 @@ public class RegisterService {
     private ResourcesRepository resourcesRepository;
     @Autowired
     private AttributesRepository attributesRepository;
+    private final InventoryRepository inventoryRepository;
 
-    public RegisterService(GameConfiguration gameConfiguration) {
+    public RegisterService(GameConfiguration gameConfiguration,
+                           InventoryRepository inventoryRepository) {
         this.gameConfiguration = gameConfiguration;
+        this.inventoryRepository = inventoryRepository;
     }
 
     public void register(RegisterRequest request) {
@@ -93,6 +96,13 @@ public class RegisterService {
         attributes.setHealth(baseAttributes.get("health"));
         attributes.setMana(baseAttributes.get("mana"));
         attributesRepository.save(attributes);
+
+        // Create inventory
+        Inventory inventory = new Inventory();
+        inventory.setHero(hero);
+        inventoryRepository.save(inventory);
+
+
     }
 
 }

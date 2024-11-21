@@ -11,20 +11,18 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "m_user")
-public class User {
+@Table(name = "m_session")
+public class UserSession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id")
     private String id;
 
-    @Column(name = "whatsapp")
-    private String whatsapp;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Hero hero;
+    @Column(name = "state")
+    private String state;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private UserSession userSession;
 }

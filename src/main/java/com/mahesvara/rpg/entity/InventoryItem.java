@@ -1,6 +1,5 @@
 package com.mahesvara.rpg.entity;
 
-import com.mahesvara.rpg.enumerate.WeaponType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,24 +11,22 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "t_weapon")
-public class Weapon {
+@Table(name = "t_inventory_item")
+public class InventoryItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
     private String id;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name ="lore")
-    private String lore;
+    @ManyToOne
+    @JoinColumn(name = "inventory_id")
+    private Inventory inventory;
 
     @ManyToOne
-    @JoinColumn(name = "character_id")
-    private Hero hero;
+    @JoinColumn(name = "item_id")
+    private Item item;
 
-    @Column(name = "type")
-    private WeaponType type;
+    @Column(name = "quantity")
+    private int quantity;
 }

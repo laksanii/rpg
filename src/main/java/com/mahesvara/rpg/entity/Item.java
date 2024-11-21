@@ -30,6 +30,6 @@ public class Item {
     private String effect;
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
-    private List<Inventory> inventory;
+    private List<InventoryItem> inventories;
 }
 

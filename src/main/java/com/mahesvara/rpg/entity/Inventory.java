@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,15 +20,11 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "character_id")
     private Hero hero;
 
-    @ManyToOne
-    @JoinColumn(name = "item_id")
-    private Item item;
-
-    @Column(name = "quantity")
-    private Integer quantity;
+    @OneToMany(mappedBy = "inventory")
+    private List<InventoryItem> items;
 
 }

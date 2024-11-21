@@ -1,20 +1,20 @@
 package com.mahesvara.rpg.entity;
 
-import com.mahesvara.rpg.enumerate.WeaponType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "t_weapon")
-public class Weapon {
-
+@Table(name = "m_race")
+public class Race {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
@@ -23,13 +23,6 @@ public class Weapon {
     @Column(name = "name")
     private String name;
 
-    @Column(name ="lore")
-    private String lore;
-
-    @ManyToOne
-    @JoinColumn(name = "character_id")
-    private Hero hero;
-
-    @Column(name = "type")
-    private WeaponType type;
+    @OneToMany(mappedBy = "race")
+    private List<Hero> hero;
 }

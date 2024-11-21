@@ -32,10 +32,13 @@ public class Hero {
     @Column(name = "level")
     private Integer level;
 
-
     @ManyToOne
     @JoinColumn(name = "element_id")
     private Element element;
+
+    @ManyToOne
+    @JoinColumn(name = "race_id")
+    private Race race;
 
     @OneToMany(mappedBy = "hero", cascade = CascadeType.ALL)
     private List<Weapon> weapon;
@@ -48,5 +51,8 @@ public class Hero {
 
     @OneToOne(mappedBy = "hero", cascade = CascadeType.ALL)
     private Resources resources;
+
+    @OneToOne(mappedBy = "hero", cascade = CascadeType.ALL)
+    private Inventory inventory;
 
 }

@@ -16,17 +16,25 @@ public class Attributes {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "strength")
-    private int strength;
+    @OneToOne
+    @JoinColumn(name = "character_id")
+    private Hero hero;
 
-    @Column(name = "agility")
-
-    private int agility;
-    @Column(name = "intelligence")
-    private int intelligence;
+    @OneToOne
+    @JoinColumn(name = "enemy_id")
+    private Enemy enemy;
 
     @Column(name = "attack")
     private int attack;
+
+    @Column(name = "strength")
+    private int strength;
+
+    @Column(name = "intelligence")
+    private int intelligence;
+
+    @Column(name = "agility")
+    private int agility;
 
     @Column(name = "armor")
     private int armor;
@@ -39,13 +47,4 @@ public class Attributes {
 
     @Column(name = "mana")
     private int mana;
-
-    @OneToOne
-    @JoinColumn(name = "character_id")
-    private Hero hero;
-
-    @OneToOne
-    @JoinColumn(name = "enemy_id")
-    private Enemy enemy;
-
 }

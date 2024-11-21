@@ -5,6 +5,7 @@ import com.mahesvara.rpg.model.WebResponse;
 import com.mahesvara.rpg.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,14 @@ public class GameController {
         registerService.register(request);
         return WebResponse.<String>builder()
                 .data("User registered successfully")
+                .build();
+    }
+
+    @GetMapping(value = "/api/hello",
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public WebResponse<String> hello() {
+        return WebResponse.<String>builder()
+                .data("Hello World")
                 .build();
     }
 

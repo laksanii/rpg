@@ -20,6 +20,10 @@ public class Resources {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    @OneToOne
+    @JoinColumn(name = "character_id")
+    private Hero hero;
+
     @PositiveOrZero
     @Column(name = "gold")
     private Long gold;
@@ -27,7 +31,5 @@ public class Resources {
     @Column(name = "experience")
     private Long experience;
 
-    @OneToOne
-    @JoinColumn(name = "character_id")
-    private Hero hero;
+
 }
