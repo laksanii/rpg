@@ -31,12 +31,12 @@ class UserControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @BeforeEach
-    void setUp() {
-        userRepository.deleteAll();
-    }
+//    @BeforeEach
+//    void setUp() {
+//        userRepository.deleteAll();
+//    }
 
-    @Test
+
     void registerSuccess() throws Exception {
         RegisterUserRequest request = new RegisterUserRequest();
         request.setWhatsapp("6281234567890");

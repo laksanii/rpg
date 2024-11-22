@@ -27,4 +27,7 @@ public class RegisterRequest {
     @NotBlank
     private String element;
 
+    @NotBlank
+    private String race;
+
 }

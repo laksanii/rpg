@@ -39,6 +39,8 @@ public class RegisterService {
     @Autowired
     private AttributesRepository attributesRepository;
     private final InventoryRepository inventoryRepository;
+    @Autowired
+    private RaceRepository raceRepository;
 
     public RegisterService(GameConfiguration gameConfiguration,
                            InventoryRepository inventoryRepository) {
@@ -61,6 +63,8 @@ public class RegisterService {
 
         Element element = elementRepository.findByName(request.getElement());
 
+        Race race = raceRepository.findByName(request.getRace());
+
         // Save User
         User user = new User();
         user.setWhatsapp(request.getWhatsapp());
@@ -72,10 +76,11 @@ public class RegisterService {
         hero.setCharacterClass(characterClass);
         hero.setElement(element);
         hero.setLevel(1);
+        hero.setRace(race);
         hero.setUser(user);
         heroRepository.save(hero);
 
-        // create resoirces
+        // create resources
         Resources resources = new Resources();
         resources.setHero(hero);
         resources.setGold(1000L);

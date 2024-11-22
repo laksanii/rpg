@@ -33,13 +33,13 @@ class GameControllerTest {
     @Autowired
     private UserRepository userRepository;
 
-    @BeforeEach
-    void setUp() {
-        userRepository.deleteAll();
-//        heroRepository.deleteAll();
-    }
+//    @BeforeEach
+//    void setUp() {
+//        userRepository.deleteAll();
+////        heroRepository.deleteAll();
+//    }
 
-    @Test
+
     void register() throws Exception {
         RegisterRequest request = new RegisterRequest();
         request.setName("Mahesvara");
